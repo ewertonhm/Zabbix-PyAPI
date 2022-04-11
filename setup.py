@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-    name='Zabbix_PyAPI',
-    packages=['Zabbix_PyAPI'],
+    name='Zabbix-PyAPI',
+    packages=['Zabbix-PyAPI'],
     version='0.1',
     license='MIT',
     description='Simple zabbix api using python',
