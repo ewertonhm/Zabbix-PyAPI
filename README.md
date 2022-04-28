@@ -7,7 +7,7 @@ A simple python lib for using the Zabbix API
 ```python
 import Zabbix_PyAPI from ZabbixPyAPI
 
-api = ZabbixPyAPI('zabbixurl.com/api_jsonrpc.php','zabbix_login','zabbix_psw')
+api = Zabbix_PyAPI('zabbixurl.com/api_jsonrpc.php','zabbix_login','zabbix_psw')
 
 params = {
     "groupids":"1547",
