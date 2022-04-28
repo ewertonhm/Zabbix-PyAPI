@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name='ZabbixPyAPI',
     packages=['ZabbixPyAPI'],
-    version='0.2',
+    version='1.0',
     license='MIT',
     description='Simple zabbix api using python',
     long_description=long_description,
@@ -16,7 +16,7 @@ setup(
     # Provide either the link to your github or to your website
     url='https://github.com/ewertonhm/ZabbixPyAPI',
     # I explain this later on
-    download_url='https://github.com/ewertonhm/ZabbixPyAPI/archive/refs/tags/0.3.tar.gz',
+    download_url='https://github.com/ewertonhm/ZabbixPyAPI/archive/refs/tags/1.0.tar.gz',
     # Keywords that define your package best
     keywords=['ZABBIX', 'API'],
     install_requires=[            # I get to this in a second
