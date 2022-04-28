@@ -1,9 +1,8 @@
-from itertools import count
 from requests import post
 import logging
 
 
-class Zabbix_PyAPI:
+class api:
     def __init__(self, url, user, psw):
         self.url = url
         self.user = user
@@ -11,11 +10,22 @@ class Zabbix_PyAPI:
         self.token = self.login()
 
     def zabbix_request(self, data):
+
+        response = post(self.url, json=data)
+        response = response.json()
+
         try:
-            return post(self.url, json=data)
+            if 'result' in response.keys():
+                return response['result']
+            elif 'error' in response.keys():
+                logging.error(f'Zabbix API Request retourned an error: '
+                              f'{{'
+                              f'code: {response["error"]["code"]}, '
+                              f'message: {response["error"]["message"]}, '
+                              f'data: {response["error"]["data"]}'
+                              f' }}')
         except Exception as e:
-            logging.error(e)
-            return False
+            logging.error(e+response)
 
     def login(self):
         data = {
@@ -29,15 +39,7 @@ class Zabbix_PyAPI:
             "auth": None
         }
         response = self.zabbix_request(data)
-        try:
-            if count(response.json()['result'] > 0):
-                return response.json()['result']
-            else:
-                return response.json()
-
-        except Exception as e:
-            logging.error(e)
-            return response
+        return response
 
     def request(self, method, params):
         data = {
@@ -48,5 +50,4 @@ class Zabbix_PyAPI:
             "id": 2
         }
 
-        response = self.zabbix_request(data)
-        return response.json()['result'][0]['groupid']
+        return self.zabbix_request(data)
