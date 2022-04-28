@@ -1,10 +1,16 @@
-from distutils.core import setup
+from setuptools import setup, Extension
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 setup(
-    name='Zabbix-PyAPI',
-    packages=['Zabbix-PyAPI'],
-    version='0.1',
+    name='ZabbixPyAPI',
+    packages=['ZabbixPyAPI'],
+    version='0.2',
     license='MIT',
     description='Simple zabbix api using python',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Ewerton Henrique Marschalk',
     author_email='sis-ewertonmarschalk@uniguacu.edu.br',      # Type in your E-Mail
     # Provide either the link to your github or to your website
